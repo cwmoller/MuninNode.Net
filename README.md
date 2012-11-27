@@ -72,7 +72,7 @@ TLS is supported, requires a certificate with key. Assuming you've created a cer
 $ openssl pkcs12 -export -out munin-node.pfx -in munin-node.crt -inkey munin-node.key -certfile ca.crt
 ```
 
-Any valid PKCS12 certificate created with OpenSSL or makecert.exe should work.
+Any valid PKCS12 certificate created with OpenSSL or makecert.exe should work. The certificate should be placed in the application folder.
 
 License
 =======
