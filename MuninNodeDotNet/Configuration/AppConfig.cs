@@ -25,6 +25,12 @@ namespace MuninNodeDotNet
 			get { return (modules)this["modules"]; }
 		}
 
+		[ConfigurationProperty("externals")]
+		public externals externals
+		{
+			get { return (externals)this["externals"]; }
+		}
+
 		[ConfigurationProperty("debug", DefaultValue=false, IsRequired=false)]
 		public Boolean debug
 		{
@@ -52,26 +58,42 @@ namespace MuninNodeDotNet
 				{
 					if (m.enabled)
 					{
-						if (m.name.Equals("checkPerfCount"))
+						switch (m.name)
 						{
-							try
-							{
-								performanceCounters perfCounters = ((AppConfig)ConfigurationManager.GetSection("munin")).perfCounters;
-								foreach (performanceCounter perfCounter in perfCounters)
+							case "checkPerfCount":
+								try
 								{
-									Plugins.checkPerfCount check = new Plugins.checkPerfCount(perfCounter);
-									activePlugins.Add(check);
+									performanceCounters perfCounters = ((AppConfig)ConfigurationManager.GetSection("munin")).perfCounters;
+									foreach (performanceCounter perfCounter in perfCounters)
+									{
+										Plugins.checkPerfCount check = new Plugins.checkPerfCount(perfCounter);
+										activePlugins.Add(check);
+									}
 								}
-							}
-							catch (System.Configuration.ConfigurationErrorsException ex)
-							{
-								NodeService.log(ex.Message);
-							}
-						}
-						else
-						{
-							moduleConfigs.Add(m);
-							activePlugins.Add((Plugins.NodePlugin)Activator.CreateInstance(null, String.Format("MuninNodeDotNet.Plugins.{0}", m.name)).Unwrap());
+								catch (System.Configuration.ConfigurationErrorsException ex)
+								{
+									NodeService.log(ex.Message);
+								}
+								break;
+							case "checkExternal":
+								try
+								{
+									externals exs = ((AppConfig)ConfigurationManager.GetSection("munin")).externals;
+									foreach (external x in exs)
+									{
+										Plugins.checkExternal check = new Plugins.checkExternal(x);
+										activePlugins.Add(check);
+									}
+								}
+								catch (System.Configuration.ConfigurationErrorsException ex)
+								{
+									NodeService.log(ex.Message);
+								}
+								break;
+							default:
+								moduleConfigs.Add(m);
+								activePlugins.Add((Plugins.NodePlugin)Activator.CreateInstance(null, String.Format("MuninNodeDotNet.Plugins.{0}", m.name)).Unwrap());
+								break;
 						}
 					}
 				}
@@ -290,6 +312,56 @@ namespace MuninNodeDotNet
 		protected override ConfigurationElement CreateNewElement()
 		{
 			return new module();
+		}
+	}
+
+	public class external : ConfigurationElement
+	{
+		[ConfigurationProperty("name", IsRequired = true, IsKey = true)]
+		public String name
+		{
+			get
+			{
+				return (String)this["name"];
+			}
+		}
+
+		[ConfigurationProperty("cmd", IsRequired = true)]
+		public String cmd
+		{
+			get
+			{
+				return (String)this["cmd"];
+			}
+		}
+	}
+
+	public class externals : ConfigurationElementCollection
+	{
+		public external this[int index]
+		{
+			get
+			{
+				return base.BaseGet(index) as external;
+			}
+		}
+
+		public new external this[String key]
+		{
+			get
+			{
+				return base.BaseGet(key) as external;
+			}
+		}
+
+		protected override object GetElementKey(ConfigurationElement element)
+		{
+			return ((external)element).name;
+		}
+
+		protected override ConfigurationElement CreateNewElement()
+		{
+			return new external();
 		}
 	}
 }

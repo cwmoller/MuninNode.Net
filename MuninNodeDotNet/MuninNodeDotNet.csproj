@@ -87,6 +87,7 @@
       <DependentUpon>NodeService.cs</DependentUpon>
     </Compile>
     <Compile Include="Plugins\checkDisk.cs" />
+    <Compile Include="Plugins\checkExternal.cs" />
     <Compile Include="Plugins\checkMemory.cs" />
     <Compile Include="Plugins\checkNetwork.cs" />
     <Compile Include="Plugins\checkPerfCount.cs" />
