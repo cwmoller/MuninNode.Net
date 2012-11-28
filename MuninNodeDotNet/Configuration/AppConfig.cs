@@ -334,6 +334,24 @@ namespace MuninNodeDotNet
 				return (String)this["cmd"];
 			}
 		}
+
+		[ConfigurationProperty("shell", DefaultValue = null, IsRequired = false)]
+		public String shell
+		{
+			get
+			{
+				return (String)this["shell"];
+			}
+		}
+
+		[ConfigurationProperty("shellArgs", DefaultValue = null, IsRequired = false)]
+		public String shellArgs
+		{
+			get
+			{
+				return (String)this["shellArgs"];
+			}
+		}
 	}
 
 	public class externals : ConfigurationElementCollection

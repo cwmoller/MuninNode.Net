@@ -31,23 +31,46 @@ namespace MuninNodeDotNet.Plugins
 
 		private String[] execute(String argument)
 		{
-			String result = null;
+			List<String> result = new List<String>();
 			ProcessStartInfo program = new ProcessStartInfo();
-			program.FileName = command.cmd;
+			if (command.shell == null)
+			{
+				program.FileName = command.cmd;
+				program.Arguments = argument;
+			}
+			else
+			{
+				program.FileName = command.shell;
+				program.Arguments = String.Format("{0} {1}", command.cmd, argument);
+				if (command.shellArgs != null)
+				{
+					program.Arguments = String.Format("{0} {1}", command.shellArgs, program.Arguments);
+				}
+			}
 			program.UseShellExecute = false;
 			program.RedirectStandardOutput = true;
 			program.WindowStyle = ProcessWindowStyle.Hidden;
-			program.Arguments = argument;
 
-			using (Process process = Process.Start(program))
+			NodeService.log(String.Format("Executing {0} {1}", program.FileName, program.Arguments));
+			try
 			{
-				using (StreamReader reader = process.StandardOutput)
+				using (Process process = Process.Start(program))
 				{
-					result = reader.ReadToEnd();
+					using (StreamReader reader = process.StandardOutput)
+					{
+						while (!reader.EndOfStream)
+						{
+							result.Add(reader.ReadLine() + "\n");
+						}
+					}
 				}
 			}
+			catch (Exception ex)
+			{
+				NodeService.log(ex.Message);
+			}
 
-			return result.Split(new Char[] { '\n' });
+			return result.ToArray();
 		}
 
 	}
