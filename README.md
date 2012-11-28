@@ -24,6 +24,7 @@ This example configuration enables all plugins and defines four performance coun
 -->
 			<add name="checkNetwork" enabled="true" />
 			<add name="checkProcess" enabled="true" />
+			<add name="checkExternal" enabled="true" />
 		</modules>
 		<performanceCounters>
 			<add name="processor" perfObject="Processor" perfCounter="% Processor Time" perfInstance="*" skipInstances="_Total" graphMultiplier="1.000000" graphTitle="Processor Time" graphCategory="system" graphArgs="--base 1000 -l 0" graphDraw="STACK" />
@@ -31,6 +32,10 @@ This example configuration enables all plugins and defines four performance coun
 			<add name="cps" perfObject="ServiceModelService 4.0.0.0" perfCounter="Calls Per Second" perfInstance="*" graphMultiplier="1.000000" graphTitle="Calls Per Second" graphCategory="wcf" graphArgs="--base 1000 -l 0" graphDraw="LINE" />
 			<add name="cout" perfObject="ServiceModelService 4.0.0.0" perfCounter="Calls Outstanding" perfInstance="*" graphMultiplier="1.000000" graphTitle="Calls Outstanding" graphCategory="wcf" graphArgs="--base 1000 -l 0" graphDraw="LINE" />
 		</performanceCounters>
+		<externals>
+			<add name="random" cmd="C:\Temp\random.ps1" shell="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" shellArgs="-executionpolicy remotesigned" />
+			<add name="random2" cmd="C:\Temp\random.cmd" shell="C:\Windows\System32\cmd.exe" shellArgs="/Q /C" />
+		</externals>
 	</munin>
 </configuration>
 ```
@@ -42,6 +47,8 @@ Set `debug` to true to have debugging output written to the event log.
 `checkNetwork` can take one parameter, `networkInterface` which gives the name of the interface to graph. If this parameter is not specified, traffic from all interfaces are summed.
 
 If `checkPerfCount` is enabled, all performance counters listed in the `performanceCounters` section will be loaded and opened at startup.
+
+If `checkExternal` is enabled, all external scripts/executables listed in the `externals` section will be loaded. Please note that enabling this plugin poses a serious security risk. Scripts/Executables will be run as the service user, generally LocalSystem.
 
 Performance Counters
 --------------------
@@ -62,6 +69,19 @@ Performance Counters
 - `graphMultiplier`, defaults to 1.000000
 - `graphDraw`, defaults to "LINE"
 - `graphType`, defaults to "GAUGE"
+
+External Scripts
+----------------
+
+**Required parameters**
+
+- `name`, should be unique, check will be prepended with `ex_`
+- `cmd`, full pathname of the script/executable
+
+**Optional parameters**
+
+- `shell`, shell to execute script in if it is not an executable, defaults to none
+- `shellArgs`, arguments to the shell, defaults to none
 
 Security
 ========
@@ -84,3 +104,6 @@ Change log
 
 **20121127**
 - Initial release
+
+**20121128**
+- Added support for external scripts
