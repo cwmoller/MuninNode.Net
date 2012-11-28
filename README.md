@@ -33,8 +33,8 @@ This example configuration enables all plugins and defines four performance coun
 			<add name="cout" perfObject="ServiceModelService 4.0.0.0" perfCounter="Calls Outstanding" perfInstance="*" graphMultiplier="1.000000" graphTitle="Calls Outstanding" graphCategory="wcf" graphArgs="--base 1000 -l 0" graphDraw="LINE" />
 		</performanceCounters>
 		<externals>
-			<add name="random" cmd="C:\Temp\random.ps1" shell="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" shellArgs="-executionpolicy remotesigned" />
-			<add name="random2" cmd="C:\Temp\random.cmd" shell="C:\Windows\System32\cmd.exe" shellArgs="/Q /C" />
+			<add name="random" cmd="C:\Progra~2\MuninNode.Net\random.ps1" shell="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" shellArgs="-executionpolicy remotesigned" />
+			<add name="random2" cmd="C:\Progra~2\MuninNode.Net\random.cmd" shell="C:\Windows\System32\cmd.exe" shellArgs="/Q /C" />
 		</externals>
 	</munin>
 </configuration>
@@ -76,11 +76,11 @@ External Scripts
 **Required parameters**
 
 - `name`, should be unique, check will be prepended with `ex_`
-- `cmd`, full pathname of the script/executable
+- `cmd`, full pathname of the script/executable. Use 8.3 style short paths (no spaces).
 
 **Optional parameters**
 
-- `shell`, shell to execute script in if it is not an executable, defaults to none
+- `shell`, shell to execute script in if it is not an executable, defaults to none. Use 8.3 style short paths (no spaces).
 - `shellArgs`, arguments to the shell, defaults to none
 
 Security

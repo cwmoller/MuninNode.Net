@@ -27,6 +27,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A373CE1D1CA046B49148E36AA65161CF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F908C65B356E4FD69A63CF92E154A92F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_96CBE25F65F645D8942BEF3A6A9BFD3A"
         "MsmSig" = "8:_UNDEFINED"
@@ -113,6 +125,20 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_56A7BE505244470686E4532AECD765B9"
+            {
+            "Name" = "8:Primary output from MuninNodeDotNet (Release x86)"
+            "Condition" = "8:"
+            "Object" = "8:_96CBE25F65F645D8942BEF3A6A9BFD3A"
+            "FileType" = "3:2"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_92678384_EC70_472A_81D4_E50F70E63F8D"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
             "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_E9DBCF769DC64A7B998965A642989943"
             {
             "Name" = "8:Primary output from MuninNodeDotNet (Release x86)"
@@ -154,6 +180,46 @@
             {
             "SourcePath" = "8:..\\MuninNodeDotNet\\munin-node.pfx"
             "TargetName" = "8:munin-node.pfx"
+            "Tag" = "8:"
+            "Folder" = "8:_B9B4946FDF1A4B34AA6A9A75A59B141D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A373CE1D1CA046B49148E36AA65161CF"
+            {
+            "SourcePath" = "8:C:\\Temp\\random.ps1"
+            "TargetName" = "8:random.ps1"
+            "Tag" = "8:"
+            "Folder" = "8:_B9B4946FDF1A4B34AA6A9A75A59B141D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F908C65B356E4FD69A63CF92E154A92F"
+            {
+            "SourcePath" = "8:C:\\Temp\\random.cmd"
+            "TargetName" = "8:random.cmd"
             "Tag" = "8:"
             "Folder" = "8:_B9B4946FDF1A4B34AA6A9A75A59B141D"
             "Condition" = "8:"
@@ -227,7 +293,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MuninNode.Net"
         "ProductCode" = "8:{E32AAAE6-2E58-44D2-B067-E9DAB177BEE5}"
-        "PackageCode" = "8:{F5706266-3C48-4E6D-9CD0-557B3DD9C0D7}"
+        "PackageCode" = "8:{54B8F870-ED3D-470D-A28E-35E2ABAB9AFB}"
         "UpgradeCode" = "8:{097EC330-EE9C-4A1A-8EEF-6F530D77CE8B}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
