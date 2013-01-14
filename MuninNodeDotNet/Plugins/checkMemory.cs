@@ -46,7 +46,9 @@ namespace MuninNodeDotNet.Plugins
 			{
 				String[] value = new String[4];
 				value[0] = String.Format("apps.value {0}\n", status.ulTotalPhys - status.ulAvailPhys);
-				value[1] = String.Format("swap.value {0}\n", status.ulTotalPageFile - status.ulAvailPageFile - status.ulTotalPhys + status.ulAvailPhys);
+				ulong swap = ((status.ulTotalPageFile - status.ulAvailPageFile) < (status.ulTotalPhys - status.ulAvailPhys)) ? 0 : status.ulTotalPageFile - status.ulAvailPageFile - status.ulTotalPhys + status.ulAvailPhys;
+
+				value[1] = String.Format("swap.value {0}\n", swap);
 				value[2] = String.Format("free.value {0}\n", status.ulAvailPhys);
 				value[3] = ".\n";
 				return value;
