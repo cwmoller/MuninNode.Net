@@ -67,7 +67,10 @@ namespace MuninNodeDotNet
 									foreach (performanceCounter perfCounter in perfCounters)
 									{
 										Plugins.checkPerfCount check = new Plugins.checkPerfCount(perfCounter);
-										activePlugins.Add(check);
+										if (check.isOK())
+										{
+											activePlugins.Add(check);
+										}
 									}
 								}
 								catch (System.Configuration.ConfigurationErrorsException ex)

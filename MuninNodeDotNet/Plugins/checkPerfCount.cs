@@ -30,6 +30,11 @@ namespace MuninNodeDotNet.Plugins
 			}
 		}
 
+		override public Boolean isOK()
+		{
+			return (config != null);
+		}
+		
 		override public String[] getConfig()
 		{
 			PerformanceCounterCategory category = new PerformanceCounterCategory(config.perfObject);
@@ -181,6 +186,7 @@ namespace MuninNodeDotNet.Plugins
 			catch (Exception ex)
 			{
 				NodeService.log(ex.Message);
+				config = null;
 			}
 		}
 	}

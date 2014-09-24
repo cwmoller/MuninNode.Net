@@ -19,6 +19,11 @@ namespace MuninNodeDotNet.Plugins
 			get { return pluginName; }
 		}
 
+		virtual public Boolean isOK()
+		{
+			return false;
+		}
+
 		virtual public String[] getConfig()
 		{
 			return new String[] { ".\n" };
