@@ -1,14 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuninNodeDotNet", "MuninNodeDotNet.csproj", "{8C61F662-8F03-4749-A8E4-645E61AF6697}"
 EndProject
-Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Installer", "..\Installer\Installer.isproj", "{5F5B44AF-029F-4171-BAF7-1DB110266B30}"
-	ProjectSection(ProjectDependencies) = postProject
-		{8C61F662-8F03-4749-A8E4-645E61AF6697} = {8C61F662-8F03-4749-A8E4-645E61AF6697}
-	EndProjectSection
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "..\Installer\Installer.vdproj", "{FA7C5D4D-A11C-4AF4-ADEE-CC6903BB9631}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,16 +26,12 @@ Global
 		{8C61F662-8F03-4749-A8E4-645E61AF6697}.Release|x86.Build.0 = Release|x86
 		{8C61F662-8F03-4749-A8E4-645E61AF6697}.SingleImage|x86.ActiveCfg = Release|x86
 		{8C61F662-8F03-4749-A8E4-645E61AF6697}.SingleImage|x86.Build.0 = Release|x86
-		{5F5B44AF-029F-4171-BAF7-1DB110266B30}.CD_ROM|x86.ActiveCfg = CD_ROM
-		{5F5B44AF-029F-4171-BAF7-1DB110266B30}.CD_ROM|x86.Build.0 = CD_ROM
-		{5F5B44AF-029F-4171-BAF7-1DB110266B30}.Debug|x86.ActiveCfg = DVD-5
-		{5F5B44AF-029F-4171-BAF7-1DB110266B30}.Debug|x86.Build.0 = DVD-5
-		{5F5B44AF-029F-4171-BAF7-1DB110266B30}.DVD-5|x86.ActiveCfg = DVD-5
-		{5F5B44AF-029F-4171-BAF7-1DB110266B30}.DVD-5|x86.Build.0 = DVD-5
-		{5F5B44AF-029F-4171-BAF7-1DB110266B30}.Release|x86.ActiveCfg = SingleImage
-		{5F5B44AF-029F-4171-BAF7-1DB110266B30}.Release|x86.Build.0 = SingleImage
-		{5F5B44AF-029F-4171-BAF7-1DB110266B30}.SingleImage|x86.ActiveCfg = SingleImage
-		{5F5B44AF-029F-4171-BAF7-1DB110266B30}.SingleImage|x86.Build.0 = SingleImage
+		{FA7C5D4D-A11C-4AF4-ADEE-CC6903BB9631}.CD_ROM|x86.ActiveCfg = Release
+		{FA7C5D4D-A11C-4AF4-ADEE-CC6903BB9631}.Debug|x86.ActiveCfg = Debug
+		{FA7C5D4D-A11C-4AF4-ADEE-CC6903BB9631}.DVD-5|x86.ActiveCfg = Debug
+		{FA7C5D4D-A11C-4AF4-ADEE-CC6903BB9631}.Release|x86.ActiveCfg = Release
+		{FA7C5D4D-A11C-4AF4-ADEE-CC6903BB9631}.Release|x86.Build.0 = Release
+		{FA7C5D4D-A11C-4AF4-ADEE-CC6903BB9631}.SingleImage|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
