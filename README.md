@@ -11,7 +11,7 @@ This example configuration enables all plugins and defines four performance coun
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-    <configSections>
+	<configSections>
 		<section name="munin" type="MuninNodeDotNet.AppConfig,MuninNodeDotNet" restartOnExternalChanges="true" />
 	</configSections>
 	<munin debug="false" certificateFile="munin-node.pfx" certificatePassword="password">
@@ -92,7 +92,9 @@ TLS is supported, requires a certificate with key. Assuming you've created a cer
 $ openssl pkcs12 -export -out munin-node.pfx -in munin-node.crt -inkey munin-node.key -certfile ca.crt
 ```
 
-Any valid PKCS12 certificate created with OpenSSL or makecert.exe should work. The certificate should be placed in the application folder.
+Or see [this](http://windowsitpro.com/blog/creating-self-signed-certificates-powershell) very good post for doing it with PowerShell.
+
+Any valid PKCS12 certificate should work. The certificate should be placed in the application folder.
 
 License
 =======
