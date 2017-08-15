@@ -92,7 +92,7 @@ namespace MuninNodeDotNet.Plugins
 					pc = counters.ElementAt(i);
 					NodeService.log(String.Format("Retrieving for {0}\\{1}", pc.InstanceName, pc.CounterName));
 					value = pc.NextValue() * config.graphMultiplier;
-					ret.Add(String.Format("{0}_{1}.value {2:#.###}\n", config.name, i, value));
+					ret.Add(String.Format("{0}_{1}.value {2:F3}\n", config.name, i, value).Replace(',', '.'));
 				}
 			}
 			catch (Exception ex)

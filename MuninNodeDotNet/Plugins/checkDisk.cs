@@ -82,7 +82,7 @@ namespace MuninNodeDotNet.Plugins
 
 			for (int i = 0; i < drives.Count; i++)
 			{
-				values.Add(String.Format("_dev_{0}_.value {1:#.###}\n", i, 100.0 - (100.0 / drives[i].TotalSize * drives[i].TotalFreeSpace)));
+				values.Add(String.Format("_dev_{0}_.value {1:F3}\n", i, 100.0 - (100.0 / drives[i].TotalSize * drives[i].TotalFreeSpace)).Replace(',', '.'));
 			}
 
 			values.Add(".\n");
