@@ -22,6 +22,9 @@ This example configuration enables all plugins and defines four performance coun
 <!--
 			<add name="checkNetwork" enabled="true" networkInterface="Realtek PCIe GBE Family Controller" />
 -->
+<!-- use 'Network Adapter' rather than 'Network Interface', get list from Powershell 'Get-NetworkAdapter' command
+			<add name="checkNetwork" enabled="true" useNetworkAdapter="true" networkInterface="Local Area Connection *2" />
+-->
 			<add name="checkNetwork" enabled="true" />
 			<add name="checkProcess" enabled="true" />
 			<add name="checkExternal" enabled="true" />

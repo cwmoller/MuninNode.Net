@@ -11,7 +11,7 @@ namespace MuninNodeDotNet.Plugins
 	{
 		private List<PerformanceCounter> counters = new List<PerformanceCounter>();
 		private String instance = "*";
-		private const String perfObject = "Network Interface";
+		private String perfObject = "Network Interface";
 		private readonly String[] perfCounters = { "Bytes Sent/sec", "Bytes Received/sec" };
 
 		public checkNetwork()
@@ -21,8 +21,12 @@ namespace MuninNodeDotNet.Plugins
 			{
 				if (m.name.Equals(pluginName))
 				{
+					if (m.useNetworkAdapter)
+					{
+						perfObject = "Network Adapter";
+					}
 					instance = m.networkInterface;
-					NodeService.log(String.Format("Using interface {0}", instance));
+					NodeService.log(String.Format("Using {0} {1}", perfObject, instance));
 					break;
 				}
 			}

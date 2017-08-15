@@ -287,6 +287,15 @@ namespace MuninNodeDotNet
 			}
 		}
 
+		[ConfigurationProperty("useNetworkAdapter", DefaultValue = false, IsRequired = false)]
+		public Boolean useNetworkAdapter
+		{
+			get
+			{
+				return (Boolean)this["useNetworkAdapter"];
+			}
+		}
+
 	}
 
 	public class modules : ConfigurationElementCollection
